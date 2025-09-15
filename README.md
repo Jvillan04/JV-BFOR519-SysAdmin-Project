@@ -25,7 +25,7 @@ Work on code through a remote IDE with low local hardware needs
 ```mermaid
 flowchart LR
   subgraph Internet
-    Client[Thin client<br/>JetBrains Gateway]
+    Client[Thin client (On PC)<br/>JetBrains Gateway]
   end
 
   subgraph Tailnet[Tailscale private network]

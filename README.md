@@ -20,8 +20,9 @@
 - Get notified when something goes wrong
 
 Work on code through a remote IDE with low local hardware needs
+
+## Architecture
 ```mermaid
-Architecture
 flowchart LR
   subgraph Internet
     Client[Thin client<br/>JetBrains Gateway]

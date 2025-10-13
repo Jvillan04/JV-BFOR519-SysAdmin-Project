@@ -12,5 +12,5 @@ Follow the on‑screen setup prompts to install Proxmox onto your main storage d
 Your screen at start up should look like this
 <img width="1044" height="788" alt="pve-grub-menu" src="https://github.com/user-attachments/assets/1cb3a258-bc05-492e-b8d0-624eb3ce769e" />
 
-Once the install is complete it you should have a little summary of your settings (These are not my setting but I had the same screen with a different IP and drive settings but overall the same)
+Once the install is complete it you should have a little summary of your settings (These are not my exact settings but I had the same screen with a different IP and drive settings but overall the same)
 <img width="1044" height="788" alt="pve-install-summary" src="https://github.com/user-attachments/assets/1705a985-9deb-4cc8-bf81-a0857bc7a835" />

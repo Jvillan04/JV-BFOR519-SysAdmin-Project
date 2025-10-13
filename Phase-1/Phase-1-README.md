@@ -1,6 +1,9 @@
 # Phase 1 - Core Set Up
 Download the Proxmox VE ISO and flash it to a USB drive using Balena Etcher, a simple tool for writing image files to storage devices. This prepares the installer for your server.
 
+<img width="389" height="251" alt="image" src="https://github.com/user-attachments/assets/ed81c7c8-0b4e-47d8-a41c-308c1dc8e8b8" />
+
+
 ## Getting Proxmox on a drive
 Once the USB is ready, plug it into your server and boot from it. Use the Proxmox installer to set up the host OS on the system drive. After installation, note the IP address assigned so you can manage Proxmox from the web UI.
 

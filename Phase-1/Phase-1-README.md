@@ -23,5 +23,5 @@ http://<server_IP>:8006.
 
 Once installation completes, remove the USB drive and take note of the web interface address shown on the final screen (this is how you’ll access the Proxmox dashboard from another device).
 
-You should see a summary screen similar to this (your IP address and drive info may differ):
+You should see a summary screen similar to this (your IP address and drive info may differ. Note: This is not my device, since at the time of writing these steps were completed prior):
 <img width="1044" height="788" alt="pve-install-summary" src="https://github.com/user-attachments/assets/1705a985-9deb-4cc8-bf81-a0857bc7a835" />

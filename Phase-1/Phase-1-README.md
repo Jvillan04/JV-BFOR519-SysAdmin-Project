@@ -1,5 +1,5 @@
 # Phase 1 - Core Set Up
-Download the Proxmox VE ISO and flash it to a USB drive using Balena Etcher, a simple tool for writing image files to storage devices. This prepares the installer for your server.
+Download the Proxmox VE ISO from the Proxmox site and flash it to a USB drive using a tool Balena Etcher (or Rufus), which is a tool for writing image files to storage devices. This prepares the installer for your server.
 
 <img width="389" height="251" alt="image" src="https://github.com/user-attachments/assets/ed81c7c8-0b4e-47d8-a41c-308c1dc8e8b8" />
 

@@ -20,7 +20,7 @@
 
 ## Phase 3 - Monitoring & Automation (Nov 11 – Nov 24)
 
-**Goal: Add monitoring with Home Assistant**
+**Goal: Add monitoring with Pulse**
   - Install Pulse in LXC or VM
 
   - Integrate with Proxmox API to monitor VMs/LXCs

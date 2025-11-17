@@ -1,6 +1,6 @@
 # Phase 1 - Core Set Up
 
-
+_Note: The below is just what I did to get Proxmox Up and running. Things could be different depending on the system that you are instaling Proxmox in_
 
 ## Getting Proxmox on a drive
 Download the Proxmox VE ISO from the Proxmox site and flash it to a USB drive using a tool like Balena Etcher (or Rufus), which is a tool for writing image files to storage devices. This prepares the installer for your server.

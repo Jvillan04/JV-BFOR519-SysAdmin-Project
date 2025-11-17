@@ -13,7 +13,7 @@ In this project, Proxmox is the base layer. Later phases will sit on top of it:
 
 Getting Proxmox installed and reachable is the first step before adding any of those pieces.
 
-### What I did in Phase 1
+## What I did in Phase 1
 
 Phase 1 was focused on a clean Proxmox install:
 
@@ -53,7 +53,7 @@ You should see a summary screen similar to this (your IP address and drive info 
 
 
 
-### Results and what is next
+## Results and what is next
 
 Below is a screenshot of the Proxmox web interface showing the node online and ready:
 

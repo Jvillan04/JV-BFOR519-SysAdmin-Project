@@ -63,8 +63,8 @@ Below is a screenshot of the Proxmox web interface showing the node online and r
 
 With Phase 1 complete, the system now has a working virtualization layer. This sets the stage for the next steps:
 
-- Create a dev VM/LXC that will act as my central development server.
 - Install Tailscale so I can reach Proxmox and the dev VM securely from outside my home network.
+- Create a dev VM/LXC that will act as my central development server.
 - Later phases will add monitoring with Pulse and set up JetBrains Gateway to use the dev VM as a remote IDE host.
 
 Phase 1 is the base: a working Proxmox host that I can turn into a full homelab platform in the next phases.

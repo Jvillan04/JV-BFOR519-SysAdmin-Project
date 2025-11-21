@@ -1,82 +1,189 @@
+````markdown
 # Adding Tailscale to Proxmox
 
-## Step 1: Create an LXC container on Proxmox for Tailscale 
+## Step 1: Create an LXC Container on Proxmox for Tailscale
 
-    Create a new LXC container in Proxmox.
-    Set the hostname (e.g., tailscale-LXC).
-    Select "unprivileged container" for better security.
-    Set a password for the root user.
-    Choose an Ubuntu template (e.g., 22.04).
-    Leave disk size at default (8GB) we don't need much.
-    Set CPU to 1 core and memory to 512MB.
-    Configure the network to DHCP initially.
-    Confirm settings and tick "Start after created" before finishing.
+1. Create a new LXC container in Proxmox.
+2. Set the hostname (e.g., `tailscale-lxc`).
+3. Select **Unprivileged container** for better security.
+4. Set a password for the `root` user.
+5. Choose an Ubuntu template (e.g., `22.04`).
+6. Leave disk size at the default (8 GB) since we do not need much.
+7. Set CPU to **1 core** and memory to **512 MB**.
+8. Configure the network to **DHCP** initially.
+9. Confirm the settings and tick **Start after created** before finishing.
+
+---
 
 ## Step 2: Enable SSH Connection
 
-    Log in to the LXC container's console as root.
-    Edit the SSH configuration file: nano /etc/ssh/sshd_config
-    Change PermitRootLogin prohibit-password to PermitRootLogin yes.
-    Save (Ctrl+O, Enter) and exit (Ctrl+X).
+1. Log in to the LXC container’s console as `root`.
+2. Edit the SSH configuration file:
 
-  
-## Step 3: Changing to Static IP
+   ```bash
+   nano /etc/ssh/sshd_config
+````
 
-    Find the container's current IP address by typing ip a in the console.
-    In the Proxmox web GUI, go to the LXC container's "Network" settings.
-    Change the IPv4/CIDR from DHCP to "Static" and enter the IP address obtained (e.g., 192.168.1.187/24).
-    Set the Gateway (e.g., 192.168.1.1).
-    Verify the network by pinging an external site (e.g., ping google.com).
+3. Change:
 
-## Step 4: Update and Upgrade Process & Install Curl
+   ```text
+   PermitRootLogin prohibit-password
+   ```
 
-    SSH into the LXC container from your terminal using the static IP.
-    Update and upgrade the system: sudo apt update && sudo apt upgrade -y
-    Install curl: sudo apt install curl -y
+   to:
 
-## Step 5: Tailscale Install
+   ```text
+   PermitRootLogin yes
+   ```
 
-    Go to the Tailscale installation guide for Linux (link: https://tailscale.com/download/https://tailscale.com/download/).
-    Copy the installation script provided.
-    Paste the script into your SSH terminal and press Enter to install Tailscale.
+4. Save (`Ctrl+O`, `Enter`) and exit (`Ctrl+X`).
 
-## Step 6: Extra Settings for Tailscale to Work (Unprivileged Container)
+5. Restart SSH:
 
-    Enable IPv4 Forwarding:
-        Edit sysctl.conf: sudo nano /etc/sysctl.conf
-        Uncomment net.ipv4.ip_forward=1 and net.ipv6.conf.all.forwarding=1.
-        Save (Ctrl+O, Enter) and exit (Ctrl+X).
-    Shut down the LXC container: sudo shutdown now
-    Mount /dev/net/tun:
+   ```bash
+   systemctl restart ssh
+   ```
 
-        In the Proxmox web GUI, select your Proxmox server (PVE).
+---
 
-        Open the "Shell".
+## Step 3: Change to a Static IP
 
-        Edit the container's configuration file: `nano /etc/pve/lxc/YOUR_CONTAINER_ID.conf` (e.g., nano /etc/pve/lxc/101.conf).
+1. Find the container’s current IP address:
 
-        Add these two lines at the end of the file:
-        ```bash
-        lxc.cgroup2.devices.allow: c 10:200 rwm
-        lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
-        ```
-        Save (Ctrl+O, Enter) and exit (Ctrl+X).
-    Start the LXC container.
+   ```bash
+   ip a
+   ```
 
-## Step 7: Start Tailscale Service with Subnet Advertising and Exit Node
-    SSH back into the LXC container.
-    Run the Tailscale up command with advertising flags: sudo tailscale up `--advertise-routes=YOUR_LOCAL_NETWORK_CIDR --advertise-exit-node`
-    Replace YOUR_LOCAL_NETWORK_CIDR with your actual local network, e.g., `192.168.1.0/24`.
-    Copy the URL provided in the terminal.
-    Open the URL in your web browser and log in with your Tailscale account (e.g., Google).
-    Connect the device to your Tailscale network.
-    Verify connection by typing tailscale status in the terminal.
+2. In the Proxmox web GUI, go to the LXC container’s **Network** settings.
 
-## Step 8: Approve Subnet Advertising and Exit Node in Tailscale Admin Console 
+3. Change IPv4/CIDR from **DHCP** to **Static** and enter the IP address obtained (e.g., `192.168.1.187/24`).
 
-    Go to https://tailscale.com/admin/machines and log in.
-    Find your newly added device in the list.
-    Click the three dots next to the device and select "Edit route settings".
-    Enable "Subnet routes" (e.g., 192.168.1.0/24) and "Use as exit node".
-    Optionally, disable "Key expiry" for this device from the same menu.
+4. Set the gateway (e.g., `192.168.1.1`).
 
+5. Verify the network by pinging an external site:
+
+   ```bash
+   ping google.com
+   ```
+
+---
+
+## Step 4: Update / Upgrade and Install `curl`
+
+1. SSH into the LXC container from your terminal using the static IP.
+
+2. Update and upgrade the system:
+
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
+
+3. Install `curl`:
+
+   ```bash
+   sudo apt install curl -y
+   ```
+
+---
+
+## Step 5: Install Tailscale
+
+1. Go to the Tailscale installation guide for Linux:
+   [https://tailscale.com/download/](https://tailscale.com/download/)
+2. Copy the installation script provided for Ubuntu/Debian.
+3. Paste the script into your SSH terminal and press **Enter** to install Tailscale.
+
+---
+
+## Step 6: Extra Settings for Tailscale in an Unprivileged Container
+
+### 6.1 Enable IPv4/IPv6 Forwarding
+
+1. Edit `sysctl.conf`:
+
+   ```bash
+   sudo nano /etc/sysctl.conf
+   ```
+
+2. Uncomment or add the following lines:
+
+   ```text
+   net.ipv4.ip_forward=1
+   net.ipv6.conf.all.forwarding=1
+   ```
+
+3. Save (`Ctrl+O`, `Enter`) and exit (`Ctrl+X`).
+
+4. Apply the changes:
+
+   ```bash
+   sudo sysctl -p
+   ```
+
+5. Shut down the LXC container:
+
+   ```bash
+   sudo shutdown now
+   ```
+
+### 6.2 Mount `/dev/net/tun` in Proxmox
+
+1. In the Proxmox web GUI, select your Proxmox server (`pve`).
+
+2. Open the **Shell**.
+
+3. Edit the container’s configuration file (replace `YOUR_CONTAINER_ID`):
+
+   ```bash
+   nano /etc/pve/lxc/YOUR_CONTAINER_ID.conf
+   # example:
+   # nano /etc/pve/lxc/101.conf
+   ```
+
+4. Add these two lines at the end of the file:
+
+   ```bash
+   lxc.cgroup2.devices.allow: c 10:200 rwm
+   lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
+   ```
+
+5. Save (`Ctrl+O`, `Enter`) and exit (`Ctrl+X`).
+
+6. Start the LXC container again from the Proxmox GUI.
+
+---
+
+## Step 7: Start Tailscale with Subnet Advertising and Exit Node
+
+1. SSH back into the LXC container.
+
+2. Run the `tailscale up` command with advertising flags (replace with your network):
+
+   ```bash
+   sudo tailscale up --advertise-routes=192.168.1.0/24 --advertise-exit-node
+   ```
+
+3. Copy the URL printed in the terminal.
+
+4. Open the URL in your web browser and log in with your Tailscale account (e.g., Google).
+
+5. Connect the device to your Tailscale network.
+
+6. Verify the connection:
+
+   ```bash
+   tailscale status
+   ```
+
+---
+
+## Step 8: Approve Subnet Routes and Exit Node in Tailscale Admin Console
+
+1. Go to [https://tailscale.com/admin/machines](https://tailscale.com/admin/machines) and log in.
+2. Find your newly added device in the list.
+3. Click the **three dots** next to the device and select **Edit route settings**.
+4. Enable **Subnet routes** (e.g., `192.168.1.0/24`) and **Use as exit node**.
+5. Optionally, disable **Key expiry** for this device from the same menu if you want it to stay connected long-term.
+
+```
+```

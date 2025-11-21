@@ -57,3 +57,14 @@ Having Tailscale running on my Proxmox server means I can securely reach my home
 - Maintain a simple way to manage and monitor remote machines through a single access path.
 
 In short, Tailscale turns my Proxmox host into a securely reachable core of my lab, which is exactly what I need for a remote-friendly sysadmin environment.
+
+## Next Steps
+
+The next step is to build on this secure remote access by adding:
+
+- **Pulse monitoring:** Deploy Pulse on a Proxmox VM or container and expose its web UI over Tailscale. This will give me a central dashboard for tracking the health, resource usage, and uptime of my homelab services, all reachable through the same secure tunnel.
+
+- **Remote IDE access:** Set up a development VM or container on Proxmox and connect to it using a remote IDE (for example, JetBrains Gateway). With Tailscale in place, I can open my IDE from a low-power laptop and work directly on the server without syncing code or pulling repos on every device.
+
+Together, these steps will turn Proxmox into a central, remotely accessible dev and monitoring hub that I can safely reach from anywhere.
+

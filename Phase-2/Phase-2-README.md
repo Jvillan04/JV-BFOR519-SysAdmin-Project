@@ -1,4 +1,3 @@
-````markdown
 # Adding Tailscale to Proxmox
 
 ## Step 1: Create an LXC Container on Proxmox for Tailscale
@@ -13,7 +12,7 @@
 8. Configure the network to **DHCP** initially.
 9. Confirm the settings and tick **Start after created** before finishing.
 
----
+
 
 ## Step 2: Enable SSH Connection
 
@@ -22,7 +21,7 @@
 
    ```bash
    nano /etc/ssh/sshd_config
-````
+   ```
 
 3. Change:
 

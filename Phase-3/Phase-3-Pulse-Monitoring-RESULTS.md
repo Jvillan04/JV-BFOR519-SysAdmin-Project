@@ -18,18 +18,7 @@ Using Pulse in this project lets me:
 
 These screenshots show Pulse actually monitoring my Proxmox server and giving useful views and alerts.
 
-> Adding the Proxmox node. I set it to auto discover and it was able to find my Proxmox server on the network  
-<img width="1628" height="940" alt="image" src="https://github.com/user-attachments/assets/097d794d-e2ca-4233-9b11-16aa16cc57c9" />
-
-> Pulse tells me to install a service on the Proxmox server so it can send system information to the Pulse LXC  
-<img width="680" height="1006" alt="image" src="https://github.com/user-attachments/assets/4c0f777a-751a-4632-ad7b-fb358ce7447b" />
-
-I then ran the command from Pulse as `root` on the Proxmox host to register it with Pulse.
-
-> Registering the Proxmox server to Pulse from the Proxmox CLI  
-<img width="1260" height="731" alt="image" src="https://github.com/user-attachments/assets/8383ed57-6820-4e75-97ca-51a512ff0bbf" />
-
-> Back on the Pulse dashboard, I can see my Proxmox server added and reporting in  
+> On the Pulse dashboard, I can see my Proxmox server reporting in  
 <img width="1611" height="913" alt="image" src="https://github.com/user-attachments/assets/ba94148d-0a36-4510-a646-31aa239f94ff" />
 
 > More detailed view of what is running on my Proxmox server  

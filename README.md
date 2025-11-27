@@ -30,6 +30,10 @@ From a systems administration point of view this setup lets me practice:
 
 It is both a practical homelab that I will keep using and a small environment similar to a production setup.
 
+This project sits in the system administration and infrastructure side of cybersecurity, with a focus on secure remote access, monitoring, and backups. I chose this topic because I wanted a homelab that I would actually use every day for development work, not just a one time class build.
+
+Besides me, this kind of setup can help other students, junior sysadmins, and small teams who need a safe way to host services at home or in a lab while still supporting remote access and basic monitoring.
+
 ---
 
 ## Architecture

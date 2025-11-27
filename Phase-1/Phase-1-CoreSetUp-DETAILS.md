@@ -1,4 +1,4 @@
-# Phase 1 install details
+# Phase 1 - Install Details
 
 These notes and screenshots are mainly for my own reference. They show how I installed Proxmox VE on the server and got the web UI address.
 

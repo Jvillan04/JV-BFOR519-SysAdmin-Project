@@ -39,3 +39,17 @@ The project shown above is a TypeScript project I worked on. Now I can edit this
 ## Notes
 
 With this setup I can keep all of my tools and source code on the Proxmox server and still work comfortably from a low power PC. It also keeps my development traffic inside the Tailnet instead of exposing extra ports on the public internet.
+
+## Why this matters as a sysadmin
+
+Setting up a JetBrains dev VM is useful from a sysadmin point of view because it lets you:
+
+* Keep all dev tools and code in one controlled place instead of on many personal machines  
+* Apply updates, patches, and security settings once on the VM instead of managing every developer PC  
+* Reuse the same access controls, backups, and monitoring that already exist for the Proxmox host  
+* Limit exposure by keeping SSH and IDE access inside the Tailnet instead of opening ports on the public internet  
+* Support remote work with thin clients, since the heavy CPU and RAM use happens on the server  
+* Reduce “it works on my machine” issues, because everyone who uses the dev VM shares the same environment
+* * Show one example of a service you can run on a server, with many more you can add later depending on what you need  
+
+This turns the dev environment into a managed service instead of a collection of individual laptops and shows how the same server can host other services in the future.

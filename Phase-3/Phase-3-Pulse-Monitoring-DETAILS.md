@@ -1,4 +1,4 @@
-# Pulse install details
+# Phase 3 - Pulse Install Details
 
 These notes and screenshots are mainly for my own reference. They show how I installed Pulse in an LXC and how I first logged into the web GUI and linked Proxmox.
 

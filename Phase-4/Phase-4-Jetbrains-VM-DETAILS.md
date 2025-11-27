@@ -41,28 +41,3 @@ Set up a JetBrains dev VM in Proxmox that I can reach over Tailscale and use as 
    * In WebStorm, opened the project folder that I pulled from GitHub.  
    * Let WebStorm index the project and verified that navigation, IntelliSense, and other IDE features work from the laptop while the backend runs on the VM.  
 
----
-
-## Results
-
-The JetBrains dev VM now works as a remote IDE backend:
-
-* From my laptop, I can open JetBrains Gateway and connect to the Ubuntu VM over Tailscale.  
-* WebStorm runs on the VM as the backend while the JetBrains client runs on my laptop.  
-* My project opens from the folder I pulled with Git, and I can edit, run, and debug code from the laptop without keeping a local copy of the repo.  
-* The VM stays on my Tailnet, so it is not directly exposed to the public internet.  
-
-Screenshots in this phase show:
-
-* The JetBrains VM in Proxmox.  
-* The VM listed in my Tailscale admin console.  
-* JetBrains Gateway connected to the VM from my laptop.  
-* WebStorm open with my project on the remote VM.  
-
-These screenshots serve as the main “results” evidence for the phase.
-
----
-
-## Notes
-
-With this setup I can keep all of my tools and source code on the Proxmox server and still work comfortably from a lower power laptop. It also keeps my development traffic inside the Tailnet instead of exposing extra ports on the public internet.

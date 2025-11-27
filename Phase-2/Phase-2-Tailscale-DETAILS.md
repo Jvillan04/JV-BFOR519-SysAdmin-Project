@@ -1,4 +1,4 @@
-# Adding Tailscale to Proxmox
+# Phase 2 - Adding Tailscale to Proxmox
 
 These notes are more for my own reference. They show how I installed Tailscale in an LXC in case I ever want to do it again.
 

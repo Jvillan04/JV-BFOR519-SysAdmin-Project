@@ -1,4 +1,4 @@
-# Phase 1 Proxmox foundation
+# Phase 1 - Proxmox Foundation
 
 **Outcome:** Proxmox VE is installed on the host with a static IP and the web UI is reachable, so the server is ready to host VMs and containers for the later phases.
 

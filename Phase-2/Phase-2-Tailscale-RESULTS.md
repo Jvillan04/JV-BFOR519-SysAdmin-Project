@@ -1,4 +1,4 @@
-# Tailscale Results
+# Phase 2 - Tailscale Results
 After installing and configuring Tailscale on my Proxmox LXC container, and installing the Tailscale client on my Windows laptop, I am now able to successfully tunnel into my home server using Tailscale and my Tailscale domain name.
 
 > Here is a screenshot of my tailscale container running in Proxmox

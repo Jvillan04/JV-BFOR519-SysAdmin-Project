@@ -1,4 +1,4 @@
-# JV-BFOR519-SysAdmin-Project
+# JV-BFOR519-SysAdmin-Project - Secure Remote Dev Homelab with Monitoring
 ## Proxmox + Tailscale + Pulse + JetBrains Gateway
 
 This project builds a secure, remote friendly homelab that I can reach from anywhere.  

@@ -158,8 +158,11 @@ This keeps heavy workloads on the Proxmox server while I use a light laptop or P
 
 ### Phase-3
 
-- [`Phase-3`](./Phase-3/)  
-  Pulse monitoring docs for Proxmox including results and install details.
+- [`Phase-3`](./Phase-3/Phase-3-Pulse-Monitoring-RESULTS.md)  
+  Pulse monitoring docs for Proxmox including results screenshots.
+
+- [`Phase-3`](./Phase-3/Phase-3-Pulse-Monitoring-DETAILS.md)  
+  Pulse monitoring docs for Proxmox including install details.
 
 ### Phase-4
 
